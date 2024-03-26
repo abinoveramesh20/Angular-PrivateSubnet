@@ -27,6 +27,11 @@ jobs:
           npm install -g @angular/cli > /dev/null
           npm install
 
-      - name: Run script
+      - name: Build Angular project locally
         run: |
-          sudo cp -r /var/www/html/Angular-PrivateSubnet/actions-runner/_work/Angular-PrivateSubnet/Angular-PrivateSubnet* /var/www/html/Angular-PrivateSubnet
+          ng build --prod
+
+      - name: Copy build to server
+        if: success() && github.event_name == 'push' && github.ref == 'refs/heads/main' # Only copy to server on successful push to main branch
+        run: |
+          sudo cp -r /var/www/html/Angular-PrivateSubnet/dist/* /var/www/html/Angular-PrivateSubnet
