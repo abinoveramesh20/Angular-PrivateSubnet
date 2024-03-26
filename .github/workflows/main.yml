@@ -3,19 +3,21 @@ on:
   push:
     branches:
       - main
-
+      
 jobs:
   build:
-    runs-on: ubuntu:latest
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: "18.x"
 
-      - uses: actions/cache@v2
+      - name: Cache npm dependencies
+        uses: actions/cache@v2
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
@@ -23,14 +25,18 @@ jobs:
 
       - name: Install Angular CLI and dependencies
         run: |
-          npm install -g @angular/cli > /dev/null
+          npm install -g @angular/cli
           npm install
 
-
-      - name: Build Angular project with stats JSON
+      - name: Build Angular project
         run: ng build 
 
-      - name: Run script
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Copy built files to deployment directory
         run: |
-          ls /var/www/html/_work/Angular-PrivateSubnet/Angular-PrivateSubnet/actions-runner/dist/angular-conduit-signals/
           sudo cp -r /var/www/html/actions-runner/_work/Angular-PrivateSubnet/Angular-PrivateSubnet/dist/angular-conduit-signals/* /var/www/html/Angular-PrivateSubnet
