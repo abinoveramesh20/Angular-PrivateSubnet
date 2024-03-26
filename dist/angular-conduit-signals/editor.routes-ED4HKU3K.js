@@ -1,0 +1,1 @@
+import"./chunk-HPEDZGUO.js";var o=[{path:"",loadComponent:()=>import("./new-article.component-CLJDL67Z.js")},{path:":slug",loadComponent:()=>import("./edit-article.component-BH2IN3L3.js")}],t=o;export{t as default};

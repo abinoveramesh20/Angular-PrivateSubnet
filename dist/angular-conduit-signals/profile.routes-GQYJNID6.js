@@ -1,0 +1,1 @@
+import{a as o,c as r}from"./chunk-4BRSYC5F.js";import"./chunk-LC2BMWWT.js";import"./chunk-HPEDZGUO.js";var t=[{path:"",loadComponent:()=>import("./profile-article-list.component-JGOANXDM.js"),providers:[r(o.MyArticle)]},{path:"favorites",loadComponent:()=>import("./profile-article-list.component-JGOANXDM.js"),providers:[r(o.FavoritedArticle)]}],p=t;export{p as default};
