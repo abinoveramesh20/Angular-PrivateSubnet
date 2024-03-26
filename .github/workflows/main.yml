@@ -27,9 +27,6 @@ jobs:
           npm install -g @angular/cli > /dev/null
           npm install
 
-      - name: Build Angular project
-        run: ng build
-
       - name: Run script
         run: |
           sudo cp -r /var/www/html/actions-runner/_work/Angular-PrivateSubnet/Angular-PrivateSubnet/dist/angular-conduit-signals/* /var/www/html/Angular-PrivateSubnet
