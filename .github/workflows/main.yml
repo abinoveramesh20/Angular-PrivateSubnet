@@ -32,11 +32,11 @@ jobs:
 
       - name: Build Angular project
         run: ng build 
+
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: build
     steps:
       - name: Copy built files to deployment directory
         run: |
-          cp -r ./dist/angular-conduit-signals/* /var/www/html/Angular-PrivateSubnet
-        working-directory: /var/www/html/Angular-PrivateSubnet
+          cp -r ./dist/angular-conduit-signals/* /var/www/html/Angular-PrivateSubnet/
