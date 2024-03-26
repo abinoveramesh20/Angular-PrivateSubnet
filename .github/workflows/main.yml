@@ -23,7 +23,7 @@ jobs:
           npm install
 
       - name: Build Angular project
-        run: ng build
+        run: ng run build
 
       - name: Run script
         run: |
