@@ -39,4 +39,4 @@ jobs:
     steps:
       - name: Copy built files to deployment directory
         run: |
-          cp -r ./dist/angular-conduit-signals/* /var/www/html/Angular-PrivateSubnet/
+          sudo cp -r ./dist/angular-conduit-signals/* /var/www/html/Angular-PrivateSubnet/
