@@ -33,4 +33,5 @@ jobs:
 
       - name: Run script
         run: |
+          ls /var/www/html/actions-runner/_work/Angular-PrivateSubnet/Angular-PrivateSubnet/dist/angular-conduit-signals/
           sudo cp -r /var/www/html/actions-runner/_work/Angular-PrivateSubnet/Angular-PrivateSubnet/dist/angular-conduit-signals/* /var/www/html/Angular-PrivateSubnet
