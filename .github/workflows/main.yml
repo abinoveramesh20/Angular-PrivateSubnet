@@ -34,7 +34,7 @@ jobs:
         uses: easingthemes/ssh-deploy@v5.0.0
         env:
           SSH_PRIVATE_KEY: ${{ secrets.KEY }}
-          SOURCE: "build/*"
+          SOURCE: "dist/angular-conduit-signals/*"
           REMOTE_HOST: ${{ secrets.SERVER_HOST }}
           REMOTE_USER: ${{ secrets.SERVER_USERNAME }}
           REMOTE_PORT: ${{ secrets.PORT }}
