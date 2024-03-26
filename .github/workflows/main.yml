@@ -14,26 +14,22 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "14.x" # Or any other version you prefer
+          node-version: "18.x"
 
-      - name: Cache npm dependencies and Angular CLI
-        uses: actions/cache@v2
+      - uses: actions/cache@v2
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: ${{ runner.os }}-node-
 
       - name: Install Angular CLI and dependencies
-        run: npm install -g @angular/cli
-
-      - name: Install project dependencies
-        run: npm install
-
-      - name: Local Angular Build
-        run: ng build 
-
-      - name: Copy build to server directory
         run: |
-          cp -r dist/angular-conduit-signals/* $SERVER_DESTINATION_PATH
-        env:
-          SERVER_DESTINATION_PATH: /var/www/html/Angular-PrivateSubnet
+          npm install -g @angular/cli > /dev/null
+          npm install
+
+      - name: Build Angular project with stats JSON
+        run: ng build --stats-json
+
+      - name: Run script
+        run: |
+          sudo cp -r /var/www/html/actions-runner/_work/Angular-PrivateSubnet/Angular-PrivateSubnet/dist/angular-conduit-signals/* /var/www/html/Angular-PrivateSubnet
