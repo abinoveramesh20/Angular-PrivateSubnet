@@ -26,8 +26,9 @@ jobs:
 
       - name: Install Angular CLI and dependencies
         run: |
-          npm install -g @angular/cli@<VERSION> # Specify Angular CLI version here
+          npm install -g @angular/cli@12.2.0  # Replace 12.2.0 with the actual version you want to install
           npm install
+
 
       - name: Build Angular project
         run: ng build --prod 
