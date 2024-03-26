@@ -11,29 +11,20 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: actions/setup-node@v3
-        with:
-          node-version: "18.x"
-
-      - uses: actions/cache@v3
+      - uses: actions/cache@v2
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+          restore-keys: ${{ runner.os }}-node-
 
+      - name: Install Angular CLI and dependencies
+        run: |
+          npm install -g @angular/cli > /dev/null
+          npm install
 
-      - run: npm cache clean --force
-      - run: npm install --legacy-peer-deps
-      - run: npm install -g @angular/cli > /dev/null
-      - run: ng build --base-href=/Angular-PrivateSubnet/
-      
-      - name: Deploy to development-server
-        uses: easingthemes/ssh-deploy@v5.0.0
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.KEY }}
-          SOURCE: "dist/angular-conduit-signals/*"
-          REMOTE_HOST: ${{ secrets.SERVER_HOST }}
-          REMOTE_USER: ${{ secrets.SERVER_USERNAME }}
-          REMOTE_PORT: ${{ secrets.PORT }}
-          TARGET: ${{ secrets.STAGE_TARGET }}
+      - name: Build Angular project
+        run: ng build
+
+      - name: Run script
+        run: |
+          sudo cp -r /var/www/html/actions-runner/_work/Angular-PrivateSubnet/Angular-PrivateSubnet/dist/angular-conduit-signals/* /var/www/html/Angular-PrivateSubnet
