@@ -27,6 +27,7 @@ jobs:
           npm install -g @angular/cli > /dev/null
           npm install
 
+
       - name: Build Angular project with stats JSON
         run: ng build --stats-json
 
