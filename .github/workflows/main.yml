@@ -1,5 +1,4 @@
 name: angular
-
 on:
   push:
     branches:
