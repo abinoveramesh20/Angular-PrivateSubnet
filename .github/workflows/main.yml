@@ -11,6 +11,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18.x"
+
       - uses: actions/cache@v2
         with:
           path: ~/.npm
@@ -23,7 +28,7 @@ jobs:
           npm install
 
       - name: Build Angular project
-        run: ng run build
+        run: ng build
 
       - name: Run script
         run: |
