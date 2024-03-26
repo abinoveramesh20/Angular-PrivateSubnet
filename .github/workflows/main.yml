@@ -33,6 +33,7 @@ jobs:
         run: ng build 
 
       # Save build artifacts as a zip file
+      # and the file will be stored in the /tmp as angular-build
       - name: Archive build artifacts
         uses: actions/upload-artifact@v2
         with:
