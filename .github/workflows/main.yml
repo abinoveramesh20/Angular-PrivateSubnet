@@ -28,7 +28,6 @@ jobs:
       - run: npm install -g @angular/cli > /dev/null
       - run: ng build --base-href=/Angular-PrivateSubnet/
       
-      
       - name: Deploy to development-server
         uses: easingthemes/ssh-deploy@v5.0.0
         env:
