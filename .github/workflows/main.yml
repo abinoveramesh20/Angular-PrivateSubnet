@@ -29,7 +29,7 @@ jobs:
 
       - name: Build Angular project locally
         run: |
-          ng build --prod
+          ng build 
 
       - name: Copy build to server
         if: success() && github.event_name == 'push' && github.ref == 'refs/heads/main' # Only copy to server on successful push to main branch
