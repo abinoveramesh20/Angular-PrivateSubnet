@@ -27,7 +27,7 @@ jobs:
       - run: npm cache clean --force
       - run: npm install --legacy-peer-deps
       - run: npm install -g @angular/cli > /dev/null
-      - run: ng build --base-href=/my-react-app/
+      - run: ng build --base-href=/Angular-PrivateSubnet/
       
       
       - name: Deploy to development-server
